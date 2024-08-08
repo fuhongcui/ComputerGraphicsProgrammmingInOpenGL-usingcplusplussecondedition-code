@@ -140,20 +140,23 @@ set(Chapter_10_bump
 
 
 function(create_project_from_sources chapter demo)
-	file(GLOB SOURCE
-            "src/${chapter}/${demo}/*.h"
-            "src/${chapter}/${demo}/*.cpp"
-        )
+    file(GLOB SOURCE
+        "src/${chapter}/${demo}/*.h"
+        "src/${chapter}/${demo}/*.cpp"
+    )
     set(NAME "${chapter}__${demo}")
     add_executable(${NAME} ${SOURCE})
     target_link_libraries(${NAME} GLEW glfw soil2-debug GL)
     set_target_properties(${NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${chapter}/${demo}")
-    file(GLOB SHADERS
-             "src/${chapter}/${demo}/*.glsl"
+
+    file(GLOB RESOURSE
+        "src/${chapter}/${demo}/*"
     )
-    foreach(SHADER ${SHADERS})
-            file(COPY ${SHADER} DESTINATION ${CMAKE_SOURCE_DIR}/bin/${chapter}/${demo})
-    endforeach(SHADER)
+    list(REMOVE_ITEM RESOURSE ${SOURCE})
+    foreach(RESOURSE_FILE ${RESOURSE})
+            file(COPY ${RESOURSE_FILE} DESTINATION ${CMAKE_SOURCE_DIR}/bin/${chapter}/${demo})
+    # message(STATUS ${RESOURSE_FILE})
+    endforeach(RESOURSE_FILE)
 endfunction()
 
 foreach(CHAPTER ${CHAPTERS})
