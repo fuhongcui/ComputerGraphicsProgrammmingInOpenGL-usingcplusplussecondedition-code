@@ -190,8 +190,8 @@ void setupShadowBuffers(GLFWwindow* window) {
 }
 
 void init(GLFWwindow* window) {
-	renderingProgram1 = Utils::createShaderProgram("./vert1Shader.glsl", "./frag1Shader.glsl");
-	renderingProgram2 = Utils::createShaderProgram("./vert2Shader.glsl", "./frag2Shader.glsl");
+    renderingProgram1 = Utils::createShaderProgram("./vert1Shader.glsl", "./frag1Shader.glsl");
+    renderingProgram2 = Utils::createShaderProgram("./vert2Shader.glsl", "./frag2Shader.glsl");
 
 	glfwGetFramebufferSize(window, &width, &height);
 	aspect = (float)width / (float)height;
