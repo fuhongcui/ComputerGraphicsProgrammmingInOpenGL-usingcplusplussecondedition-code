@@ -4,6 +4,8 @@ project(Main)
 
 set(CMAKE_CXX_STANDARD 11)
 
+add_definitions(-DGLEW_NO_GLU)
+
 include_directories(include)
 link_directories(lib)
 
